@@ -3,6 +3,10 @@ const app = new Vue(
     {
         el: '#root',
         data: {
+            myProfile:{
+                    name: 'Mariano Marchionna',
+                    avatar: '_io'
+            },
             contacts: [
                 {
                     name: 'Michele',
