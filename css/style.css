@@ -51,6 +51,7 @@
 .main-icon i {
     padding: 5px;
     cursor: pointer;
+    color: #b1b1b1;
 }
 
 .main-icon i:last-child {

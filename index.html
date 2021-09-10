@@ -16,8 +16,7 @@
                 <div class="main-profile">
                     <div class="main-data">
                         <div class="main-image">
-                            <!-- <img :src="'img/avatar'+'myProfile.avatar'+'.jpg'" alt="Immagine profilo"> -->
-                            <img src="img/avatar_io.jpg" alt="Immagine profilo">
+                            <img v-bind:src="'img/avatar' + myProfile.avatar + '.jpg'" alt="Immagine profilo">
                         </div>
                         <div class="main-name">
                             <p>{{ myProfile.name }}</p>
