@@ -95,15 +95,30 @@
     color: gray;
 }
 /* fine sezione notifications */
+/* sezione search */
 .search {
     width: 100%;
-    height: 10%;
-    background-color: pink;
+    height: 5%;
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
 }
 
+.search i {
+    margin: 0 30px;
+    cursor: pointer;
+    color: #b1b1b1;
+}
+
+.search input {
+    padding: 5px;
+    padding-right: 100px;
+    border: 0px;
+}
+/* fine sezione search */
 .contacts {
     width: 100%;
-    height: 70%;
+    height: 75%;
     background-color: #ffffff;
     overflow-y: scroll;
 }
