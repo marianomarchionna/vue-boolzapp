@@ -3,6 +3,7 @@ const app = new Vue(
     {
         el: '#root',
         data: {
+            index : 0,
             myProfile:{
                     name: 'Mariano Marchionna',
                     avatar: '_io'
@@ -91,6 +92,10 @@ const app = new Vue(
             ]
         },
         methods: {
+            selectContact(i) {
+                this.index = i;
+                
+            }
         }
     }
 )
