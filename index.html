@@ -49,8 +49,8 @@
                 <!-- fine sezione cerca -->
                 <!-- sezione contatti -->
                 <div class="contacts">
-                    <ul v-for="contact in contacts">
-                        <li>
+                    <ul v-for="(contact, i) in contacts">
+                        <li @click="selectContact(element, i)">
                             <div class="contact-image">
                                 <img v-bind:src="'img/avatar' + contact.avatar + '.jpg'" alt="Immagine profilo">
                             </div>
@@ -67,11 +67,11 @@
                 <div class="chat-profile">
                     <div class="chat-data">
                         <div class="chat-image">
-                            <img v-bind:src="'img/avatar' + contacts[0].avatar + '.jpg'" alt="Immagine profilo">
+                            <img v-bind:src="'img/avatar' + contacts[index].avatar + '.jpg'" alt="Immagine profilo">
                         </div>
                         <div class="chat-data-text">
                             <div class="chat-name">
-                                <p>{{ contacts[0].name }}</p>
+                                <p>{{ contacts[index].name }}</p>
                             </div>
                             <div class="chat-access">
                                 <p>Ultimo accesso oggi alle </p>

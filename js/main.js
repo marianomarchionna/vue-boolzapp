@@ -92,9 +92,8 @@ const app = new Vue(
             ]
         },
         methods: {
-            selectContact(i) {
+            selectContact(element, i) {
                 this.index = i;
-                
             }
         }
     }
