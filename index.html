@@ -47,9 +47,20 @@
                     <input type="text" placeholder="Cerca o inizia una nuova chat">
                 </div>
                 <!-- fine sezione cerca -->
+                <!-- sezione contatti -->
                 <div class="contacts">
-
+                    <ul v-for="contact in contacts">
+                        <li>
+                            <div class="contact-image">
+                                <img v-bind:src="'img/avatar' + contact.avatar + '.jpg'" alt="Immagine profilo">
+                            </div>
+                            <div class="contact-name">
+                                <p>{{ contact.name }}</p>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
+                <!-- sezione contatti -->
             </div>
             <div class="right">
                 <div class="chat-profile">
