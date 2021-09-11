@@ -50,7 +50,7 @@
                 <!-- sezione contatti -->
                 <div class="contacts">
                     <ul v-for="(contact, i) in contacts">
-                        <li @click="selectContact(element, i)">
+                        <li @click="selectContact(contact, i)">
                             <div class="contact-image">
                                 <img v-bind:src="'img/avatar' + contact.avatar + '.jpg'" alt="Immagine profilo">
                             </div>
@@ -74,7 +74,7 @@
                                 <p>{{ contacts[index].name }}</p>
                             </div>
                             <div class="chat-access">
-                                <p>Ultimo accesso oggi alle </p>
+                                <p>Ultimo accesso oggi alle {{ contacts[index].messages[contacts[index].messages.length-1].date }}</p>
                             </div>
                         </div>
                     </div>
@@ -87,7 +87,20 @@
                 <!-- fine sezione profilo chat aperta -->
                 <!-- sezione chat -->
                 <div class="chat">
-
+                    <div class="chat-container">
+                        <div  v-for="(element, i) in contacts[index].messages" v-if="element.status == 'received'" class="clearfix">
+                            <div class="received">
+                                <p class="text-message">{{ element.message }}</p>
+                                <p class="date-message">{{ element.date }}</p>
+                            </div>
+                        </div>
+                        <div v-else class="clearfix">
+                            <div class="sent">
+                                <p class="text-message">{{ element.message }}</p>
+                                <p class="date-message">{{ element.date }}</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <!-- fine sezione chat -->
                 <!-- sezione messaggio -->

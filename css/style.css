@@ -3,6 +3,12 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+.clearfix:after{
+    clear: both;
+    display: table;
+    content: "";
+}
 /* common */
 #root {
     width: 100%;
@@ -184,6 +190,40 @@
     height: 83%;
     background-image: url("../img/mine.jpg");
     overflow-y: scroll;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.chat-container{
+    height: 93%;
+    width: 80%;
+}
+
+.received,
+.sent {
+    padding: 15px;
+    font-size: 14px;
+    max-width: 40%;
+    border-radius: 15px;
+    margin-bottom: 10px;
+}
+
+.received{
+    background-color: white;
+    float: left;
+}
+
+.sent {
+    background-color: #d2f0b7;
+    float: right;
+}
+
+.date-message {
+    font-size: 11px;
+    color: gray;
+    display: flex;
+    justify-content: flex-end;
 }
 /* fine sezione chat */
 /* sezione message */
