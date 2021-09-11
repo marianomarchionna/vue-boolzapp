@@ -151,6 +151,25 @@
 
 .contact-name {
     margin-top: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.message-preview,
+.message-time {
+    color: gray;
+    font-size: 11px;
+}
+
+.message-preview::after {
+    content: "...";
+    color: gray;
+    font-size: 12px;
+}
+
+.name-preview {
+    max-width: 50%;
 }
 /* fine sezione contacts */
 /* fine sezione left */

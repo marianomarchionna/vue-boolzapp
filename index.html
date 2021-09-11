@@ -55,7 +55,11 @@
                                 <img v-bind:src="'img/avatar' + contact.avatar + '.jpg'" alt="Immagine profilo">
                             </div>
                             <div class="contact-name">
-                                <p>{{ contact.name }}</p>
+                                <div class="name-preview">
+                                    <p>{{ contact.name }}</p>
+                                    <p class="message-preview">{{ contacts[i].messages[contacts[i].messages.length-1].message }}</p>
+                                </div>
+                                <p class="message-time">{{ contacts[i].messages[contacts[i].messages.length-1].date }}</p>
                             </div>
                         </li>
                     </ul>
