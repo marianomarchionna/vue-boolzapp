@@ -3,7 +3,8 @@ const app = new Vue(
     {
         el: '#root',
         data: {
-            index : 0,
+            newMessage: '',
+            index: 0,
             myProfile:{
                     name: 'Mariano Marchionna',
                     avatar: '_io'
@@ -94,6 +95,29 @@ const app = new Vue(
         methods: {
             selectContact(element, i) {
                 this.index = i;
+            },
+            getData(){
+                let now = new Date();
+                let dd = String(now.getDate()).padStart(2, '0');
+                let mm = String(now.getMonth() + 1).padStart(2, '0');
+                let yyyy = now.getFullYear();
+                let date = dd + '/' + mm + '/' +yyyy;
+                let hours = String(now.getHours()).padStart(2, '0');
+                let minutes = String(now.getMinutes()).padStart(2, '0');
+                let seconds = String(now.getSeconds()).padStart(2, '0');
+                let time = hours + ':' + minutes + ':' + seconds;
+                let dateTime = date + ' ' + time;
+                return dateTime;
+            },
+            sentMessage(){
+                this.contacts[this.index].messages.push({message: this.newMessage, status: 'sent', date: this.getData()});
+                this.newMessage="";
+                this.receivedMessage();
+            },
+            receivedMessage(){
+                setTimeout(()=>{
+                     this.contacts[this.index].messages.push({message: "Va bene", status: 'received', date: this.getData()});
+                },1000);
             }
         }
     }

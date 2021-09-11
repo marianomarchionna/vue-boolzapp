@@ -106,7 +106,7 @@
                 <!-- sezione messaggio -->
                 <div class="message">
                     <i class="far fa-smile"></i>
-                    <input type="text" placeholder="Scrivi un messaggio">
+                    <input type="text" placeholder="Scrivi un messaggio" v-model="newMessage" @keyUp.enter="sentMessage">
                     <i class="fas fa-microphone"></i>
                 </div>
                 <!-- fine sezione messaggio -->
