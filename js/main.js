@@ -4,6 +4,7 @@ const app = new Vue(
         el: '#root',
         data: {
             newMessage: '',
+            filter:'',
             index: 0,
             myProfile:{
                     name: 'Mariano Marchionna',

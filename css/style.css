@@ -162,6 +162,10 @@
     font-size: 11px;
 }
 
+.message-time {
+    padding-right: 5px;
+}
+
 .message-preview::after {
     content: "...";
     color: gray;
@@ -223,9 +227,22 @@
 .sent {
     padding: 15px;
     font-size: 14px;
-    max-width: 40%;
+    max-width: 90%;
     border-radius: 15px;
     margin-bottom: 10px;
+}
+
+.arrow-down {
+    opacity: 0;
+    margin-top: 3px;
+    cursor: pointer;
+    float: right;
+    color: gray;
+}
+
+.received:hover .arrow-down,
+.sent:hover .arrow-down {
+    opacity: 1;
 }
 
 .received{
