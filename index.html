@@ -92,15 +92,8 @@
                 <!-- sezione chat -->
                 <div class="chat">
                     <div class="chat-container">
-                        <div  v-for="(element, i) in contacts[index].messages" v-if="element.status == 'received'" class="clearfix">
-                            <div class="received">
-                                <i class="fas fa-chevron-down arrow-down"></i>
-                                <p class="text-message">{{ element.message }}</p>
-                                <p class="date-message">{{ element.date }}</p>
-                            </div>
-                        </div>
-                        <div v-else class="clearfix">
-                            <div class="sent">
+                        <div  v-for="(element, i) in contacts[index].messages" class="clearfix">
+                            <div :class="(element.status=='sent')? 'sent':'received'">
                                 <i class="fas fa-chevron-down arrow-down"></i>
                                 <p class="text-message">{{ element.message }}</p>
                                 <p class="date-message">{{ element.date }}</p>
