@@ -138,6 +138,7 @@
     height: 76%;
     background-color: #ffffff;
     overflow-y: scroll;
+    padding-right: 5px;
 }
 
 .contacts li:hover{
@@ -162,18 +163,14 @@
     font-size: 11px;
 }
 
-.message-time {
-    padding-right: 5px;
-}
-
-.message-preview::after {
-    content: "...";
-    color: gray;
-    font-size: 12px;
+.message-preview {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 .name-preview {
-    max-width: 50%;
+    max-width: 60%;
 }
 /* fine sezione contacts */
 /* fine sezione left */
@@ -265,7 +262,7 @@
     justify-content: flex-end;
 }
 
-.info-menu {
+#info-menu {
     height: 70px;
     width: 130px;
     position: absolute;
@@ -290,10 +287,6 @@
 .info:hover,
 .delete:hover {
     background-color: #eaeaea;
-}
-
-.info-delete:active .info-menu{
-    display: inline-block;
 }
 
 .triangle-received,

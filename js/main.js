@@ -4,7 +4,6 @@ const app = new Vue(
         el: '#root',
         data: {
             newMessage: '',
-            filter:'',
             index: 0,
             myProfile:{
                     name: 'Mariano Marchionna',
@@ -119,6 +118,16 @@ const app = new Vue(
                 setTimeout(()=>{
                      this.contacts[this.index].messages.push({message: "Va bene", status: 'received', date: this.getData()});
                 },1000);
+            },
+            toggleVisibility(element) {
+                let x = document.getElementById("info-menu");
+                if (x.style.display === "none") {
+                    x.style.display = "block";
+                } else {
+                    x.style.display = "none";
+                }
+                console.log(x);
+                console.log(element);
             }
         }
     }

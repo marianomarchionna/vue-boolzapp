@@ -57,7 +57,7 @@
                             <div class="contact-name">
                                 <div class="name-preview">
                                     <p>{{ contact.name }}</p>
-                                    <p class="message-preview">{{ contacts[i].messages[contacts[i].messages.length-1].message }}</p>
+                                    <p class="message-preview">{{ contacts[i].messages[contacts[i].messages.length-1].message }}...</p>
                                 </div>
                                 <p class="message-time">{{ contacts[i].messages[contacts[i].messages.length-1].date }}</p>
                             </div>
@@ -92,11 +92,11 @@
                 <!-- sezione chat -->
                 <div class="chat">
                     <div class="chat-container">
-                        <div  v-for="(element, i) in contacts[index].messages" class="clearfix">
+                        <div v-for="(element, i) in contacts[index].messages" class="clearfix">
                             <div :class="(element.status=='sent')? 'sent':'received'">
                                 <div class="info-delete">
-                                    <i class="fas fa-chevron-down arrow-down"></i>
-                                    <div class="info-menu">
+                                    <i class="fas fa-chevron-down arrow-down" @click="toggleVisibility(element)"></i>
+                                    <div id="info-menu">
                                         <div class="info">Info messaggio</div>
                                         <div class="delete">Cancella messaggio</div>
                                     </div>
