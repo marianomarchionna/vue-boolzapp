@@ -230,6 +230,7 @@
     max-width: 90%;
     border-radius: 15px;
     margin-bottom: 10px;
+    position: relative;
 }
 
 .arrow-down {
@@ -248,11 +249,13 @@
 .received{
     background-color: white;
     float: left;
+    border-top-left-radius: 0
 }
 
 .sent {
     background-color: #d2f0b7;
     float: right;
+    border-top-right-radius: 0
 }
 
 .date-message {
@@ -260,6 +263,60 @@
     color: gray;
     display: flex;
     justify-content: flex-end;
+}
+
+.info-menu {
+    height: 70px;
+    width: 130px;
+    position: absolute;
+    left: 50%;
+    top: 60%;
+    z-index: 99;
+    display: none;
+}
+
+.info,
+.delete {
+    position: relative;
+    height: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    background-color: white;
+}
+
+.info:hover,
+.delete:hover {
+    background-color: #eaeaea;
+}
+
+.info-delete:active .info-menu{
+    display: inline-block;
+}
+
+.triangle-received,
+.triangle-sent {
+    position: absolute;
+    width: 0; 
+    height: 0; 
+    border-top: 10px solid transparent;
+    top: 0px;
+}
+
+.triangle-received{
+    border-left: 10px solid transparent;
+    border-top-left-radius: 5px;
+    left: -10px;
+    border-top: 10px solid white;
+}
+
+.triangle-sent {
+    border-right: 10px solid transparent;
+    border-top-right-radius: 5px;
+    right: -10px;
+    border-top: 10px solid #d2f0b7;
 }
 /* fine sezione chat */
 /* sezione message */

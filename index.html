@@ -94,9 +94,16 @@
                     <div class="chat-container">
                         <div  v-for="(element, i) in contacts[index].messages" class="clearfix">
                             <div :class="(element.status=='sent')? 'sent':'received'">
-                                <i class="fas fa-chevron-down arrow-down"></i>
-                                <p class="text-message">{{ element.message }}</p>
-                                <p class="date-message">{{ element.date }}</p>
+                                <div class="info-delete">
+                                    <i class="fas fa-chevron-down arrow-down"></i>
+                                    <div class="info-menu">
+                                        <div class="info">Info messaggio</div>
+                                        <div class="delete">Cancella messaggio</div>
+                                    </div>
+                                    <p class="text-message">{{ element.message }}</p>
+                                    <p class="date-message">{{ element.date }}</p>
+                                    <div :class="(element.status=='sent')? 'triangle-sent':'triangle-received'"></div>
+                                </div>
                             </div>
                         </div>
                     </div>
