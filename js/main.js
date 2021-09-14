@@ -7,6 +7,7 @@ const app = new Vue(
             index: 0,
             search: '',
             searchResult: [0, 1, 2, 3],
+            menuVisible: false,
             myProfile:{
                     name: 'Mariano Marchionna',
                     avatar: '_io'
@@ -133,15 +134,14 @@ const app = new Vue(
                     }
                 });
             },
-            toggleVisibility(element) {
-                let x = document.getElementById("info-menu");
-                if (x.style.display === "none") {
-                    x.style.display = "block";
+            toggleVisibility(){
+                let i = this._data.index;
+                console.log(this._data.contacts[i]);
+                if(this.menuVisible == false){
+                    this.menuVisible = true;
                 } else {
-                    x.style.display = "none";
+                    this.menuVisible = false;
                 }
-                console.log(x);
-                console.log(element);
             }
         }
     }

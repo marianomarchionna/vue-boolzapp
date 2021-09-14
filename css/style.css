@@ -262,11 +262,17 @@
     border-top-right-radius: 0;
 }
 
-.date-message {
+.data-check {
     font-size: 11px;
     color: gray;
     display: flex;
     justify-content: flex-end;
+}
+
+
+.data-check i {
+    padding: 0 5px;
+    color: #8edafc;
 }
 
 #info-menu {
@@ -276,7 +282,7 @@
     left: 50%;
     top: 60%;
     z-index: 99;
-    display: none;
+    box-shadow: 5px 5px 5px gray;
 }
 
 .info,
