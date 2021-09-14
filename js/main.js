@@ -7,7 +7,7 @@ const app = new Vue(
             index: 0,
             search: '',
             searchResult: [0, 1, 2, 3],
-            menuVisible: false,
+            activeMessage: null,
             myProfile:{
                     name: 'Mariano Marchionna',
                     avatar: '_io'
@@ -111,15 +111,18 @@ const app = new Vue(
                 let time = hours + ':' + minutes + ':' + seconds;
                 let dateTime = date + ' ' + time;
                 return dateTime;
+                // let date = dayjs().format('DD/MM/YYYY HH:mm:ss');
             },
             sentMessage(){
-                this.contacts[this.index].messages.push({message: this.newMessage, status: 'sent', date: this.getData()});
+                if(this.newMessage){
+                    this.contacts[this.index].messages.push({message: this.newMessage, status: 'sent', date: this.getData()});
+                    this.receivedMessage();
+                }
                 this.newMessage="";
-                this.receivedMessage();
             },
             receivedMessage(){
                 setTimeout(()=>{
-                     this.contacts[this.index].messages.push({message: "Va bene", status: 'received', date: this.getData()});
+                    this.contacts[this.index].messages.push({message: "Va bene", status: 'received', date: this.getData()});
                 },1000);
             },
             searchChat(){
@@ -134,14 +137,17 @@ const app = new Vue(
                     }
                 });
             },
-            toggleVisibility(){
-                let i = this._data.index;
-                console.log(this._data.contacts[i]);
-                if(this.menuVisible == false){
-                    this.menuVisible = true;
-                } else {
-                    this.menuVisible = false;
-                }
+            toggleVisibility(i){
+                if(this.activeMessage == null)
+                    this.activeMessage = i;
+                else this.activeMessage = null;
+            },
+            infoMessage(element){
+                let statusMessage;
+                if(element.status === 'sent')
+                    statusMessage = 'Inviato';
+                else statusMessage = 'Ricevuto';
+                alert(' DATA E ORA: ' + element.date + ' TESTO: ' + element.message + ' STATO: ' + statusMessage);
             }
         }
     }

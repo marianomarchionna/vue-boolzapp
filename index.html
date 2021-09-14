@@ -95,10 +95,10 @@
                         <div v-for="(element, i) in contacts[index].messages" class="clearfix">
                             <div :class="(element.status=='sent')? 'sent':'received'">
                                 <div class="info-delete">
-                                    <i class="fas fa-chevron-down arrow-down" v-on:click="toggleVisibility"></i>
-                                    <div v-show="menuVisible" id="info-menu">
-                                        <div class="info">Info messaggio</div>
-                                        <div class="delete">Cancella messaggio</div>
+                                    <i class="fas fa-chevron-down arrow-down" v-on:click="toggleVisibility(i)"></i>
+                                    <div v-if="activeMessage==i" id="info-menu">
+                                        <div class="info" @click="infoMessage(element)">Info messaggio</div>
+                                        <div class="delete" @click="deleteMessage(element, i)">Cancella messaggio</div>
                                     </div>
                                     <p class="text-message">{{ element.message }}</p>
                                     <div class="data-check">
