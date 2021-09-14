@@ -98,6 +98,7 @@ const app = new Vue(
         methods: {
             selectContact(i) {
                 this.index = i;
+                this.activeMessage = null;
             },
             getData(){
                 let now = new Date();
