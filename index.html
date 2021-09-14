@@ -112,8 +112,11 @@
                 <!-- sezione messaggio -->
                 <div class="message">
                     <i class="far fa-smile"></i>
-                    <input type="text" placeholder="Scrivi un messaggio" v-model="newMessage" @keyUp.enter="sentMessage">
-                    <i class="fas fa-microphone"></i>
+                    <div class="input-text">
+                        <input type="text" placeholder="Scrivi un messaggio" v-model="newMessage" @keyUp.enter="sentMessage">
+                        <i v-if="newMessage==''" class="fas fa-microphone"></i>
+                        <i v-else class="fab fa-google-play" v-model="newMessage" @click="sentMessage"></i>
+                    </div>
                 </div>
                 <!-- fine sezione messaggio -->
             </div>
