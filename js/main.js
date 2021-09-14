@@ -5,6 +5,8 @@ const app = new Vue(
         data: {
             newMessage: '',
             index: 0,
+            search: '',
+            searchResult: [0, 1, 2, 3],
             myProfile:{
                     name: 'Mariano Marchionna',
                     avatar: '_io'
@@ -93,7 +95,7 @@ const app = new Vue(
             ]
         },
         methods: {
-            selectContact(element, i) {
+            selectContact(i) {
                 this.index = i;
             },
             getData(){
@@ -118,6 +120,18 @@ const app = new Vue(
                 setTimeout(()=>{
                      this.contacts[this.index].messages.push({message: "Va bene", status: 'received', date: this.getData()});
                 },1000);
+            },
+            searchChat(){
+                let nameChat = this.search.toLowerCase();
+                this.searchResult=[];
+                this.contacts.forEach((contact,index) => {
+                    let nameContact = contact.name.toLowerCase();
+                    if(nameContact.includes(nameChat)){
+                        return this.searchResult.push(index);
+                    } else {
+                        return this.searchResult;
+                    }
+                });
             },
             toggleVisibility(element) {
                 let x = document.getElementById("info-menu");

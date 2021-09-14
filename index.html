@@ -44,22 +44,22 @@
                 <!-- sezione cerca -->
                 <div class="search">
                     <i class="fas fa-search"></i>
-                    <input type="text" placeholder="Cerca o inizia una nuova chat">
+                    <input type="text" placeholder="Cerca o inizia una nuova chat" v-model='search' @keyUp="searchChat">
                 </div>
                 <!-- fine sezione cerca -->
                 <!-- sezione contatti -->
                 <div class="contacts">
-                    <ul v-for="(contact, i) in contacts">
-                        <li @click="selectContact(contact, i)">
+                    <ul v-for="result in searchResult">
+                        <li @click="selectContact(result)">
                             <div class="contact-image">
-                                <img v-bind:src="'img/avatar' + contact.avatar + '.jpg'" alt="Immagine profilo">
+                                <img v-bind:src="'img/avatar' + contacts[result].avatar + '.jpg'" alt="Immagine profilo">
                             </div>
                             <div class="contact-name">
                                 <div class="name-preview">
-                                    <p>{{ contact.name }}</p>
-                                    <p class="message-preview">{{ contacts[i].messages[contacts[i].messages.length-1].message }}...</p>
+                                    <p>{{ contacts[result].name }}</p>
+                                    <p class="message-preview">{{ contacts[result].messages[contacts[result].messages.length-1].message }}...</p>
                                 </div>
-                                <p class="message-time">{{ contacts[i].messages[contacts[i].messages.length-1].date }}</p>
+                                <p class="message-time">{{ contacts[result].messages[contacts[result].messages.length-1].date }}</p>
                             </div>
                         </li>
                     </ul>
@@ -115,7 +115,7 @@
                     <div class="input-text">
                         <input type="text" placeholder="Scrivi un messaggio" v-model="newMessage" @keyUp.enter="sentMessage">
                         <i v-if="newMessage==''" class="fas fa-microphone"></i>
-                        <i v-else class="fab fa-google-play" v-model="newMessage" @click="sentMessage"></i>
+                        <i v-else class="fab fa-google-play" @click="sentMessage"></i>
                     </div>
                 </div>
                 <!-- fine sezione messaggio -->

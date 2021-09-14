@@ -153,11 +153,16 @@
 .contact-name {
     margin-top: 10px;
     width: 100%;
+    min-width: 50px;
     display: flex;
     justify-content: space-between;
 }
 
 .message-preview,
+.message-time {
+    color: gray;
+}
+
 .message-time {
     color: gray;
     font-size: 11px;
@@ -167,6 +172,7 @@
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
+    font-size: 12px;
 }
 
 .name-preview {
@@ -333,6 +339,8 @@
 
 .message i {
     margin: 0 30px;
+    height: 21px;
+    min-width: 16px;
     color: gray;
     cursor: pointer;
 }
