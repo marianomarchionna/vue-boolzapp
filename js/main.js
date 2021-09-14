@@ -148,7 +148,11 @@ const app = new Vue(
                     statusMessage = 'Inviato';
                 else statusMessage = 'Ricevuto';
                 alert(' DATA E ORA: ' + element.date + ' TESTO: ' + element.message + ' STATO: ' + statusMessage);
-            }
+            },
+            deleteMessage(i) {
+                this.contacts[this.index].messages.splice(i, 1);
+                this.activeMessage = null;
+            },
         }
     }
 )

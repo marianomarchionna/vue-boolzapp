@@ -98,7 +98,7 @@
                                     <i class="fas fa-chevron-down arrow-down" v-on:click="toggleVisibility(i)"></i>
                                     <div v-if="activeMessage==i" id="info-menu">
                                         <div class="info" @click="infoMessage(element)">Info messaggio</div>
-                                        <div class="delete" @click="deleteMessage(element, i)">Cancella messaggio</div>
+                                        <div class="delete" @click="deleteMessage(i)">Cancella messaggio</div>
                                     </div>
                                     <p class="text-message">{{ element.message }}</p>
                                     <div class="data-check">
