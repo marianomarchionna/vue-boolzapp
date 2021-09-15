@@ -92,7 +92,8 @@
                 <!-- sezione chat -->
                 <div class="chat">
                     <div class="chat-container">
-                        <div v-for="(element, i) in contacts[index].messages" class="clearfix">
+                        <div v-if="contacts[index].messages.length==0" class="no-message">Nessun messaggio</div>
+                        <div v-else v-for="(element, i) in contacts[index].messages" class="clearfix">
                             <div :class="(element.status=='sent')? 'sent':'received'">
                                 <div class="info-delete">
                                     <i class="fas fa-chevron-down arrow-down" v-on:click="toggleVisibility(i)"></i>
