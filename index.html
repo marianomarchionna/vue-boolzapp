@@ -57,9 +57,11 @@
                             <div class="contact-name">
                                 <div class="name-preview">
                                     <p>{{ contacts[result].name }}</p>
-                                    <p class="message-preview">{{ contacts[result].messages[contacts[result].messages.length-1].message }}...</p>
+                                    <p v-if="contacts[index].messages" class="message-preview">{{ contacts[result].messages[contacts[result].messages.length-1].message }}...</p>
+                                    <p v-else class="preview-nomessage">---</p>
                                 </div>
-                                <p class="message-time">{{ contacts[result].messages[contacts[result].messages.length-1].date }}</p>
+                                <p v-if="contacts[index].messages" class="message-time">{{ contacts[result].messages[contacts[result].messages.length-1].date }}</p>
+                                <p v-else class="preview-time-nomessage">---</p>
                             </div>
                         </li>
                     </ul>
@@ -77,8 +79,11 @@
                             <div class="chat-name">
                                 <p>{{ contacts[index].name }}</p>
                             </div>
-                            <div class="chat-access">
+                            <div v-if="contacts[index].messages" class="chat-access">
                                 <p>Ultimo accesso oggi alle {{ contacts[index].messages[contacts[index].messages.length-1].date }}</p>
+                            </div>
+                            <div v-else class="access-nomessage">
+                                <p>---</p>
                             </div>
                         </div>
                     </div>
@@ -92,8 +97,7 @@
                 <!-- sezione chat -->
                 <div class="chat">
                     <div class="chat-container">
-                        <div v-if="contacts[index].messages.length==0" class="no-message">Nessun messaggio</div>
-                        <div v-else v-for="(element, i) in contacts[index].messages" class="clearfix">
+                        <div v-if="contacts[index].messages" v-for="(element, i) in contacts[index].messages" class="clearfix">
                             <div :class="(element.status=='sent')? 'sent':'received'">
                                 <div class="info-delete">
                                     <i class="fas fa-chevron-down arrow-down" v-on:click="toggleVisibility(i)"></i>
@@ -122,6 +126,7 @@
                                 </div>
                             </div>
                         </div>
+                        <div v-else  class="no-message">Nessun messaggio</div>
                     </div>
                 </div>
                 <!-- fine sezione chat -->
