@@ -49,7 +49,7 @@
                 <!-- fine sezione cerca -->
                 <!-- sezione contatti -->
                 <div class="contacts">
-                    <ul v-for="result in searchResult">
+                    <ul v-for="(result, index) in searchResult">
                         <li @click="selectContact(result)">
                             <div class="contact-image">
                                 <img v-bind:src="'img/avatar' + contacts[result].avatar + '.jpg'" alt="Immagine profilo">
@@ -57,11 +57,11 @@
                             <div class="contact-name">
                                 <div class="name-preview">
                                     <p>{{ contacts[result].name }}</p>
-                                    <p v-if="contacts[index].messages" class="message-preview">{{ contacts[result].messages[contacts[result].messages.length-1].message }}...</p>
-                                    <p v-else class="preview-nomessage">---</p>
+                                    <p v-if="contacts[index].messages.length != 0" class="message-preview">{{ contacts[result].messages[contacts[result].messages.length-1].message }}...</p>
+                                    <p v-else class="preview-nomessage"></p>
                                 </div>
-                                <p v-if="contacts[index].messages" class="message-time">{{ contacts[result].messages[contacts[result].messages.length-1].date }}</p>
-                                <p v-else class="preview-time-nomessage">---</p>
+                                <p v-if="contacts[index].messages.length != 0" class="message-time">{{ contacts[result].messages[contacts[result].messages.length-1].date }}</p>
+                                <p v-else class="preview-time-nomessage"></p>
                             </div>
                         </li>
                     </ul>
@@ -79,11 +79,11 @@
                             <div class="chat-name">
                                 <p>{{ contacts[index].name }}</p>
                             </div>
-                            <div v-if="contacts[index].messages" class="chat-access">
+                            <div v-if="contacts[index].messages.length != 0" class="chat-access">
                                 <p>Ultimo accesso oggi alle {{ contacts[index].messages[contacts[index].messages.length-1].date }}</p>
                             </div>
                             <div v-else class="access-nomessage">
-                                <p>---</p>
+                                <p></p>
                             </div>
                         </div>
                     </div>
@@ -96,8 +96,8 @@
                 <!-- fine sezione profilo chat aperta -->
                 <!-- sezione chat -->
                 <div class="chat">
-                    <div class="chat-container">
-                        <div v-if="contacts[index].messages" v-for="(element, i) in contacts[index].messages" class="clearfix">
+                    <div v-if="contacts[index].messages.length != 0" class="chat-container">
+                        <div v-for="(element, i) in contacts[index].messages" class="clearfix">
                             <div :class="(element.status=='sent')? 'sent':'received'">
                                 <div class="info-delete">
                                     <i class="fas fa-chevron-down arrow-down" v-on:click="toggleVisibility(i)"></i>
@@ -126,8 +126,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div v-else  class="no-message">Nessun messaggio</div>
                     </div>
+                    <div v-else  class="no-message">Il tuo codice di sicurezza con {{ contacts[index].name }} è cambiato. Clicca per saperne di più.</div>
                 </div>
                 <!-- fine sezione chat -->
                 <!-- sezione messaggio -->
