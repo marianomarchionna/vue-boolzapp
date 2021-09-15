@@ -8,6 +8,10 @@ const app = new Vue(
             search: '',
             searchResult: [0, 1, 2, 3],
             activeMessage: null,
+            infoMessages: null,
+            infoData: null,
+            userMessage: null,
+            infoStatus: null,
             myProfile:{
                     name: 'Mariano Marchionna',
                     avatar: '_io'
@@ -143,12 +147,21 @@ const app = new Vue(
                     this.activeMessage = i;
                 else this.activeMessage = null;
             },
-            infoMessage(element){
-                let statusMessage;
-                if(element.status === 'sent')
-                    statusMessage = 'Inviato';
-                else statusMessage = 'Ricevuto';
-                alert(' DATA E ORA: ' + element.date + ' TESTO: ' + element.message + ' STATO: ' + statusMessage);
+            infoMessage(element, i){
+                if(this.infoMessages == null){
+                    let statusMessage;
+                    this.infoMessages = i;
+                    if(element.status === 'sent') statusMessage = 'Inviato';
+                    else statusMessage = 'Ricevuto';
+                    this.infoData = element.date;
+                    this.userMessage = element.message;
+                    this.infoStatus = statusMessage;
+                }
+                else this.infoMessages = null;
+            },
+            closeInfo(){
+                this.infoMessages = null,
+                this.activeMessage = null;
             },
             deleteMessage(i) {
                 this.contacts[this.index].messages.splice(i, 1);

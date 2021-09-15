@@ -97,7 +97,7 @@
                                 <div class="info-delete">
                                     <i class="fas fa-chevron-down arrow-down" v-on:click="toggleVisibility(i)"></i>
                                     <div v-if="activeMessage==i" id="info-menu">
-                                        <div class="info" @click="infoMessage(element)">Info messaggio</div>
+                                        <div class="info" @click="infoMessage(element, i)">Info messaggio</div>
                                         <div class="delete" @click="deleteMessage(i)">Cancella messaggio</div>
                                     </div>
                                     <p class="text-message">{{ element.message }}</p>
@@ -106,6 +106,18 @@
                                         <i v-if="element.status==='sent'" class="fas fa-check-double"></i>
                                     </div>
                                     <div :class="(element.status=='sent')? 'triangle-sent':'triangle-received'"></div>
+                                </div>
+                            </div>
+                            <div v-if="infoMessages==i" class="info-message">
+                                <div class="info-user">
+                                    <img v-bind:src="'img/avatar' + contacts[index].avatar + '.jpg'" alt="Immagine profilo">
+                                    <h3>{{contacts[index].name}}</h3>
+                                    <i class="fas fa-times" @click="closeInfo()"></i>
+                                </div>
+                                <div class="info-data">
+                                    <h4>DATA E ORA: {{infoData}}</h4>
+                                    <h4>TESTO: {{userMessage}}</h4>
+                                    <h4>STATO MESSAGGIO: {{infoStatus}}</h4>
                                 </div>
                             </div>
                         </div>
